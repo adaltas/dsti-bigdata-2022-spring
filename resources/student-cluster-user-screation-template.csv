@@ -1,0 +1,16 @@
+# ./bin/ryba user create \
+#   --file docs/0.project_management/users/dsti_2022_spring.csv \
+#   --columns lastname,firstname,email,username \
+#   --group  dsti_2022_spring \
+#   --username "{f}.{lastname}-dsti" \
+#   --dryrun
+
+# test l/p:  dsti_2022_spring / bd212d00da7160e9f3204c2bd6dc6e17,,,
+
+dsti_2022_spring,admin,dharty@adaltas.com,dsti_2022_spring
+
+# Comma separated list of student details
+SURNAME,first name,email
+SURNAME,first name,email
+SURNAME,first name,email
+SURNAME,first name,email
