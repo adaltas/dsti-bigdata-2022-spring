@@ -34,6 +34,23 @@ The Oozie workflow is composed of:
    oozie job -info 0000040-201011090406050-oozie-oozi-W -oozie http://oozie-1.au.adaltas.cloud:11000/oozie
    ```
 
+4. To get the logs of one action from the `yarn` CLI
+   1. Get the job ID from the oozie command of step 3. (e.g. `job_1631812995637_0402`)
+   2. Replace `job` by `application` (e.g. `application_1631812995637_0402`)
+   3. Use `yarn logs` to get the logs from `stderr`:
+      ```sh
+      yarn logs -applicationId application_1631812995637_0402 -log_files 'stderr'
+      Container: container_e54_1631812995637_0402_01_000002 on wrk-1.au.adaltas.cloud_45454_1634646632767
+      LogAggregationType: AGGREGATED
+      ===================================================================================================
+      LogType:stderr
+      LogLastModifiedTime:Tue Oct 19 12:30:32 +0000 2021
+      LogLength:3279
+      LogContents:
+      SLF4J: Class path contains multiple SLF4J bindings.
+      ...
+      ```
+
 ### TO DO
 
 1. Complete the `workflow.base.xml` to be able to run it (2 parameters to add: `jdbc-url`, `script`)
