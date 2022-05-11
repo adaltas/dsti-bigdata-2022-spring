@@ -26,10 +26,29 @@
       <param>hiveUsername=${hiveUsername}</param>
       <param>clusterUsername=${clusterUsername}</param>
     </hive2>
-    <ok to="end" />
+    <ok to="create_orc_table" />
     <error to="kill_job" />
   </action>
 
+  <action name="create_orc_table" cred="hive-creds">
+    <hive2 xmlns="uri:oozie:hive2-action:0.2">
+      <jdbc-url>${jdbcUrl}</jdbc-url>
+      <script>scripts/create_drivers_orc.hql</script>
+      <param>hiveUsername=${hiveUsername}</param>
+    </hive2>
+    <ok to="insert_overwrite_orc_table" />
+    <error to="kill_job" />
+  </action>
+
+  <action name="insert_overwrite_orc_table" cred="hive-creds">
+    <hive2 xmlns="uri:oozie:hive2-action:0.2">
+      <jdbc-url>${jdbcUrl}</jdbc-url>
+      <script>scripts/insert_drivers_orc.hql</script>
+      <param>hiveUsername=${hiveUsername}</param>
+    </hive2>
+    <ok to="end" />
+    <error to="kill_job" />
+  </action>
 
   <kill name="kill_job">
     <message>Job failed</message>
