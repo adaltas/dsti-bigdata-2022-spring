@@ -21,20 +21,43 @@ The Oozie workflow is composed of:
 
 ### How to run a workflow
 
-1. Put the workflow folder in HDFS (in your user directory for example)
+1. If not already done, `git clone` this repo to your home directory
+   ```bash
+   git clone https://github.com/adaltas/dsti-bigdata-2022-spring.git
+   ```
+2. Pull the latest changes
+   ```bash
+   cd dsti-bigdata-2022-spring
+   git pull
+   ```
+3. Copy the `oozie_wf` folder to your home directory
+
+   ```bash
+   cd
+   cp -r dsti-bigdata-2022-spring/modules/07.oozie/lab-resources/oozie_wf .
+   ```
+
+4. Edit the `oozie_wf/job.properties` to change the `hiveUsername` and `cluserUsername`
+   ```ini
+   # Variables
+   hiveUsername=f_lastname
+   clusterUsername=f.lastname-dsti
+   ```
+5. Put the workflow folder in HDFS (in your user directory for example)
    ```bash
    hdfs dfs -put -f oozie_wf/ "/user/$USER"
    ```
-2. Submit the job using the `oozie` CLI
+6. Submit the job using the `oozie` CLI
    ```bash
    oozie job -run -config oozie_wf/job.properties -oozie http://oozie-1.au.adaltas.cloud:11000/oozie
    ```
-3. To get the status of the job from the CLI
+7. To get the status of the job from the CLI
+
    ```bash
    oozie job -info 0000040-201011090406050-oozie-oozi-W -oozie http://oozie-1.au.adaltas.cloud:11000/oozie
    ```
 
-4. To get the logs of one action from the `yarn` CLI
+8. To get the logs of one action from the `yarn` CLI
    1. Get the job ID from the oozie command of step 3. (e.g. `job_1631812995637_0402`)
    2. Replace `job` by `application` (e.g. `application_1631812995637_0402`)
    3. Use `yarn logs` to get the logs from `stderr`:
