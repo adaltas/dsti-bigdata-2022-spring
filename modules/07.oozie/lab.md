@@ -38,7 +38,8 @@ The Oozie workflow is composed of:
    ```
 
 4. Edit the `oozie_wf/job.properties` file using `vim` to change the `hiveUsername` and `cluserUsername`
-   In `vim`, press `i` to enter edit mode, `esc` to exit the edit mode and `:wq` to save and quit the editing
+   In `vim`, press `i` to enter insert mode, `esc` to exit the edit mode and `:wq` to save and quit the editing
+   
    ```ini
    # Variables
    hiveUsername=f_lastname
@@ -77,7 +78,7 @@ The Oozie workflow is composed of:
 
 ### TO DO
 
-1. Complete the `workflow.base.xml` to be able to run it (2 parameters to add: `jdbc-url`, `script`)
+1. Complete the `workflow.xml` to be able to run it (2 parameters to add: `jdbc-url`, `script`)
 2. Adapt the `job.properties` to your workflow
 3. Run the job
 4. Make sure there are no errors
