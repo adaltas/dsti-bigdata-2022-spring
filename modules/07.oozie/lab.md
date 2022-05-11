@@ -37,7 +37,8 @@ The Oozie workflow is composed of:
    cp -r dsti-bigdata-2022-spring/modules/07.oozie/lab-resources/oozie_wf .
    ```
 
-4. Edit the `oozie_wf/job.properties` to change the `hiveUsername` and `cluserUsername`
+4. Edit the `oozie_wf/job.properties` file using `vim` to change the `hiveUsername` and `cluserUsername`
+   In `vim`, press `i` to enter edit mode, `esc` to exit the edit mode and `:wq` to save and quit the editing
    ```ini
    # Variables
    hiveUsername=f_lastname
